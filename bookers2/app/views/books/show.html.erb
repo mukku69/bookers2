@@ -1,0 +1,18 @@
+<div class="col-md-8 offset-md-1" style="user-select: auto;">
+  <h2 style="user-select: auto;">Book detail</h2>
+  <table class="table" style="user-select: auto;">
+  	<tbody style="user-select: auto;">
+  	  <tr style="user-select: auto;">
+       <td style="user-select: auto;"><%= @book.user.name %></td>
+       <td style="user-select: auto;"><%= @book.title %></td>
+       <td style="user-select: auto;"><%= @book.body %></td>
+       <td style="user-select: auto;"><a class="btn btn-sm btn-success edit_book_25835" href="/books/25835/edit" style="user-select: auto;">Edit</a></td>
+       <td style="user-select: auto; class="btn btn-sm btn-danger >
+         <% if @book.user == current_user %>
+          <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？" %>
+         <% end %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
