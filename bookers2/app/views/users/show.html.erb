@@ -1,22 +1,28 @@
+<%= render 'books/list', books: @books %>
+
 <div class="col-md-8 offset-md-1" style="user-select: auto;">
-  <h2 style="user-select: auto;">Users</h2>
+  <h2 style="user-select: auto;">Books</h2>
   <table class="table table-hover table-inverse" style="user-select: auto;">
     <thead style="user-select: auto;">
       <tr style="user-select: auto;">
         <th style="user-select: auto;"></th>
-        <th style="user-select: auto;">image</th>
-        <th style="user-select: auto;">name</th>
+        <th style="user-select: auto;">Title</th>
+        <th style="user-select: auto;">Opinion</th>
         <th colspan="3" style="user-select: auto;"></th>
       </tr>
     </thead>
     <tbody style="user-select: auto;">
-      <% @users.each do |user| %>
+      <% @books.each do |book| %>
         <tr style="user-select: auto;">
           <td style="user-select: auto;"><%= image_tag('猫の手のフリー素材1.png') %></td>
-          <td style="user-select: auto;"><%= user.image %></td>
-          <td style="user-select: auto;"><%= user.name %></td>
+          <td style="user-select: auto;">
+           <%= link_to book_path(book.id) do %>
+             <%= book.title %>
+           <% end %>
+          </td>
+          <td style="user-select: auto;"><%= book.body %></td>
         </tr>
       <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 </div>

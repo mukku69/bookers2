@@ -1,0 +1,22 @@
+
+<div class="col-md-8 offset-md-1" style="user-select: auto;">
+  <h2 style="user-select: auto;">Users</h2>
+  <table class="table table-hover table-inverse" style="user-select: auto;">
+    <thead style="user-select: auto;">
+      <tr style="user-select: auto;">
+        <th style="user-select: auto;">image</th>
+        <th style="user-select: auto;">name</th>
+        <th colspan="3" style="user-select: auto;"></th>
+      </tr>
+    </thead>
+    <tbody style="user-select: auto;">
+      <% @users.each do |user| %>
+        <tr style="user-select: auto;">
+          <td><%= attachment_image_tag user, :profile_image, :fill, 50, 50,fallback: "no_image.jpg" %></td>
+          <td style="user-select: auto;"><%= user.name %></td>
+          <td style="user-select: auto;"><%= link_to "Show" , user_path(user.id) %></td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>
+</div>
