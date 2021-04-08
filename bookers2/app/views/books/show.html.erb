@@ -1,18 +1,30 @@
-<div class="col-md-8 offset-md-1" style="user-select: auto;">
-  <h2 style="user-select: auto;">Book detail</h2>
-  <table class="table" style="user-select: auto;">
-  	<tbody style="user-select: auto;">
-  	  <tr style="user-select: auto;">
-       <td style="user-select: auto;"><%= @book.user.name %></td>
-       <td style="user-select: auto;"><%= @book.title %></td>
-       <td style="user-select: auto;"><%= @book.body %></td>
-       <td style="user-select: auto;"><a class="btn btn-sm btn-success edit_book_25835" href="/books/25835/edit" style="user-select: auto;">Edit</a></td>
-       <td style="user-select: auto; class="btn btn-sm btn-danger >
-         <% if @book.user == current_user %>
-          <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？" %>
-         <% end %>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class = "container px-5 px-sm-0 mt-3">
+
+  <div class ="row">
+
+    <%= render "users/list",  book:@book, user: @user %>
+
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+      <table class="table">
+      	<tbody>
+      	  <tr>
+           <td>
+            <%= link_to user_path(@user) do %>
+             <%= attachment_image_tag @books.user, :profile_image, fallback: "no_image.jpg", size: "40x40"  %></br><%= @books.user.name %>
+            <% end %>
+           </td>
+           <td><%= link_to @books.title, book_path(@books.id) %></td>
+           <td><%= @books.body %></td>
+           <% if @books.user == current_user %>
+             <td><%= link_to "Edit", edit_book_path(@books), class: "btn btn-sm btn-success" %></td>
+             <td><%= link_to "Destroy", book_path(@books), { method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-sm btn-danger" }%></td>
+           <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
 </div>
